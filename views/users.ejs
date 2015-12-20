@@ -27,7 +27,47 @@
           </div>
         </nav>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h1><%= title %></h1>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  User ID
+                </th>
+                <th>
+                  First Name
+                </th>
+                <th>
+                  Last Name
+                </th>
+                <th>
+                  Email
+                </th>
+                <th>
+                  Username
+                </th>
+                <th>
+                  Password
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].id %></td>
+                  <td><%= data[i].first_name %></td>
+                  <td><%= data[i].last_name %></td>
+                  <td><%= data[i].email %></td>
+                  <td><%= data[i].username %></td>
+                  <td><%= data[i].password %></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>

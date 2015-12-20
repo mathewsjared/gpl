@@ -27,6 +27,43 @@
           </div>
         </nav>
       </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h1><%= title %></h1>
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  Match ID
+                </th>
+                <th>
+                  Player 1
+                </th>
+                <th>
+                  Score 1
+                </th>
+                <th>
+                  Player 2
+                </th>
+                <th>
+                  Score 2
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].id %></td>
+                  <td><%= data[i].user_id1 %></td>
+                  <td><%= data[i].score1 %></td>
+                  <td><%= data[i].user_id2 %></td>
+                  <td><%= data[i].score2 %></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
