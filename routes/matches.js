@@ -77,5 +77,8 @@ router.delete('/:id', function(req, res) { // curl -X DELETE http://localhost:30
   });
 });
 
+router.get('/create', function(req, res){
+  res.render('../createMatch.ejs');
+});
 
 module.exports = router;
