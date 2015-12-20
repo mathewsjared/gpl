@@ -5,9 +5,9 @@ module.exports = function(){
     client: 'pg',
     connection: {
       host     : '127.0.0.1',
-      user     : 'Mathews',
+      user     : 'SaundieWeiss',
       password : 'password',
-      database : 'gpldb'
+      database : 'gpl'
     },
     searchPath: 'knex,public',
     debug: true
