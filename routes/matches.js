@@ -4,7 +4,7 @@ var knex = require('knex')({
   client: 'pg',
   connection: {
     host     : '127.0.0.1',
-    user     : 'iansmith',
+    user     : 'Mathews', // Updated Per Person
     password : 'password',
     database : 'gpldb'
   },
