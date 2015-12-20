@@ -23,7 +23,7 @@ router.get('/new', function(req, res) {
 });
 
 // POST ‘/new’ - creates individual TODO
-// curl -d "user1=2&score1=17&user2=4&score2=21" http://localhost:3000/matches/new
+// curl -d "user1=4&score1=21&user2=3&score2=11" http://localhost:3000/matches/new
 router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/matches/new
   var match = {};
 
@@ -45,6 +45,11 @@ router.get('/:id', function(req, res) {
   .select('*').then(function(data){
     res.send(JSON.stringify(data) + '\n');
   });
+});
+
+// GET ‘/:id/edit’ - shows edit page of individual resource TODO
+router.get('/:id/edit', function(req, res) {
+  res.send('takes you to edit individual match page');
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
@@ -72,9 +77,5 @@ router.delete('/:id', function(req, res) { // curl -X DELETE http://localhost:30
   });
 });
 
-// GET ‘/:id/edit’ - shows edit page of individual resource TODO
-router.get('/:id/edit', function(req, res) {
-  res.send('takes you to edit individual match page');
-});
 
 module.exports = router;

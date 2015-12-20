@@ -23,6 +23,7 @@ router.get('/new', function(req, res) {
 });
 
 // POST ‘/new’ - creates individual TODO
+// curl -d "firstName=Jimmy&lastName=Kary&email=jimmy@gpl.com&username=jimster&password=sdjhfsl" http://localhost:3000/users/new
 router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/users/new
   var user = {};
 
@@ -33,7 +34,7 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.password = req.body.password;
 
   Users().insert(user).then(function(){
-    res.send(JSON.stringify(user) + '\n');
+    res.send(JSON.stringify(user) + '\n'); // Placeholder
   });
 });
 
@@ -43,8 +44,13 @@ router.get('/:id', function(req, res) {
     id: req.params.id
   })
   .select('*').then(function(data){
-    res.send(JSON.stringify(data) + '\n');
+    res.send(JSON.stringify(data) + '\n'); // Placeholder
   });
+});
+
+// GET ‘/:id/edit’ - shows edit page of individual resource TODO
+router.get('/:id/edit', function(req, res) {
+  res.send('takes you to edit individual user page');
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
@@ -72,9 +78,5 @@ router.delete('/:id', function(req, res) { // curl -X DELETE http://localhost:30
   });
 });
 
-// GET ‘/:id/edit’ - shows edit page of individual resource TODO
-router.get('/:id/edit', function(req, res) {
-  res.send('takes you to edit individual user page');
-});
 
 module.exports = router;
