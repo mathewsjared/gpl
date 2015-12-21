@@ -24,54 +24,30 @@ router.get('/new', function(req, res) {
   });
 });
 
-//GET '/current' - shows current match page
-router.get('/current', function(req, res) {
-  res.render('currMatch', {
-    title: "Current Match"
-  });
-});
-
 
 // POST ‘/new’ - creates individual TODO
 // curl -d "user1=4&score1=21&user2=3&score2=11" http://localhost:3000/matches/new
 router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/matches/new
+
   var match = {};
-  var counter = 0;
 
-  Users().where({
-    username: req.body.username1
-  })
-  .select('*').then(function(user1Data){
-    console.log(user1Data);
-    match.user_id1 = user1Data[0].id;
-      match.score1 = -1;
-      
-    counter++;
+  match.username1 = req.body.username1;
+  match.score1 = -1;
+  match.username2 = req.body.username2;
+  match.score2 = -1;
 
-    if(counter > 1) {
-      Matches().insert(match).then(function(){
-        res.send(JSON.stringify(match) + '\n');
+  Matches().returning('id').insert(match).then(function(newId) {
+    Matches().where({
+      id: Number(newId)
+    })
+    .select('*').then(function() {
+      res.render('currMatch', {
+        title: "Current Match : " + newId,
+        userOne: match.username1,
+        userTwo: match.username2
       });
-    }
+    });
   });
-
-  Users().where({
-    username: req.body.username2
-  })
-  .select('*').then(function(user2Data){
-    match.user_id2 = user2Data[0].id;
-      match.score2 = -1;
-
-    counter++;
-
-    if(counter > 1) {
-      Matches().insert(match).then(function(){
-        res.send(JSON.stringify(match) + '\n');
-      });
-    }
-  });
-
-  
 });
 
 // GET ‘/:id’ - shows individual resource TODO
