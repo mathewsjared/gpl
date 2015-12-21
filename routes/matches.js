@@ -10,7 +10,7 @@ var Table = require('../data/knexSetup.js'),
 router.get('/', function(req, res) {
   Matches().select('*')
   .then(function(data) {
-    res.render('Matches', {
+    res.render('matches', {
       title: 'All Matches',
       data: data
     });
