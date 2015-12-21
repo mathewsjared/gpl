@@ -18,6 +18,7 @@ router.get('/', function(req, res) {
 		redditRes.on('end', function(){
 			
 			var redditData = JSON.parse(body);
+			console.log(redditData);
 			var dataArray = []; 
 				for (var i = 0; i < 5; i++) {
 					var url = redditData.data.children[i].data.url;
