@@ -24,6 +24,14 @@ router.get('/new', function(req, res) {
   });
 });
 
+//GET '/current' - shows current match page
+router.get('/current', function(req, res) {
+  res.render('currMatch', {
+    title: "Current Match"
+  });
+});
+
+
 // POST ‘/new’ - creates individual TODO
 // curl -d "user1=4&score1=21&user2=3&score2=11" http://localhost:3000/matches/new
 router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/matches/new
@@ -40,12 +48,11 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
       
     counter++;
 
-  if(counter > 1) {
-    Matches().insert(match).then(function(){
-      res.send(JSON.stringify(match) + '\n');
-    });
-  }
-
+    if(counter > 1) {
+      Matches().insert(match).then(function(){
+        res.send(JSON.stringify(match) + '\n');
+      });
+    }
   });
 
   Users().where({
