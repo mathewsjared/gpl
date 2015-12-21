@@ -31,11 +31,23 @@
         <div class="col-md-5">
         </div>
         <div class="col-md-2">
-          <h2>Match ID</h2>
+          <h2><%= title %></h2>
         </div>
         <div class="col-md-5">
         </div>
       </div>
+      <form action="/matches/current" method="post">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-3">
+            <input name="score1"type="text" id="score_1" placeholder="user 1 score" />
+          </div>
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-3">
+            <input name="score2" type="text" id="score_2" placeholder="user 2 score" />
+          </div>
+        </div>
+      </form>
     </div>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
