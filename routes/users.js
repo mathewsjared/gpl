@@ -19,7 +19,9 @@ router.get('/', function(req, res) {
 
 // GET ‘/new’ - shows new create new resource page TODO
 router.get('/new', function(req, res) {
-  res.send('Takes you to Create new user page');
+  res.render('createUser', {
+    title: 'Create new user'
+  });
 });
 
 // POST ‘/new’ - creates individual TODO
@@ -34,17 +36,29 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.password = req.body.password;
 
   Users().insert(user).then(function(){
-    res.send(JSON.stringify(user) + '\n'); // Placeholder
+    res.send(JSON.stringify(user) + '\n'); // This will change to route to the newly created user's profile page
   });
 });
 
 // GET ‘/:id’ - shows individual resource TODO
 router.get('/:id', function(req, res) {
   Users().where({
-    id: req.params.id
+    id: Number (req.params.id)
   })
   .select('*').then(function(data){
-    res.send(JSON.stringify(data) + '\n'); // Placeholder
+    var user = {};
+    user.first_name = JSON.stringify(data[0].first_name);
+    user.last_name = JSON.stringify(data[0].last_name);
+    user.username = JSON.stringify(data[0].username);
+    user.email = JSON.stringify(data[0].email);
+
+    res.render('userProfile', {
+      title: 'Title',
+      username: user.username,
+      first: user.first_name,
+      last: user.last_name,
+      email: user.email
+    })
   });
 });
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+          <div class="container">
+            <!-- REMINDER: change href link when deploying to heroku -->
+            <a class="navbar-brand" href="/">
+              GPL
+            </a>
+            <ul class="nav nav-pills">
+              <!-- REMINDER: change href link when deploying to heroku -->
+              <li role="presentation"><a href="/users">USERS</a></li>
+              <!-- REMINDER: change href link when deploying to heroku -->
+              <li role="presentation"><a href="/matches">MATCHES</a></li>
+              <li role="presentation"><a href="#">ABOUT</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class='row'>
+      <div class='col-md-offset-4 col-md-4'>
+        <form action='/users/new' method='post'>
+          <div class="form-group">
+            <label for="FirstName">First name</label>
+            <input name="firstName" type="text" class="form-control" id="FirstName" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label for="LastName">Last name</label>
+            <input name="lastName"type="text" class="form-control" id="LastName" placeholder="Last name">
+          </div>
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input name="email" type="email" class="form-control" id="Email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="UserName">Username</label>
+            <input name="username"type="text" class="form-control" id="UserName" placeholder="Username">
+          </div>
+          <div class="form-group">
+            <label for="Password">Password</label>
+            <input name="password" type="password" class="form-control" id="Password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</body>
+
+</html>
