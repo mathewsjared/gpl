@@ -35,15 +35,26 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.username = req.body.username;
   user.password = req.body.password;
 
-  Users().insert(user).then(function(){
-    res.send(JSON.stringify(user) + '\n'); // This will change to route to the newly created user's profile page
+  Users().returning('id').insert(user).then(function(newId){
+    Users().where({
+      id: Number(newId)
+    })
+    .select('*').then(function(){
+      res.render('userProfile', {
+        title: 'Title',
+        username: user.username,
+        first: user.first_name,
+        last: user.last_name,
+        email: user.email
+      });
+    });
   });
 });
 
 // GET ‘/:id’ - shows individual resource TODO
 router.get('/:id', function(req, res) {
   Users().where({
-    id: Number (req.params.id)
+    id: Number(req.params.id)
   })
   .select('*').then(function(data){
     var user = {};
@@ -58,7 +69,7 @@ router.get('/:id', function(req, res) {
       first: user.first_name,
       last: user.last_name,
       email: user.email
-    })
+    });
   });
 });
 
