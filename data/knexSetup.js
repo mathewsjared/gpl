@@ -5,12 +5,7 @@ require('dotenv').load();
 module.exports = function(){
   var knex = require('knex')({
     client: 'pg',
-    connection: {
-      host     : process.env.DATABASE_URL,
-      user     : process.env.DB_USER,
-      password : process.env.DB_PASSWORD,
-      database : process.env.DB_NAME
-    },
+    connection: process.env.DATABASE_URL,
     searchPath: 'knex,public',
     debug: true
   });
