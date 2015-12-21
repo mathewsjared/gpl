@@ -1,14 +1,11 @@
 'use strict';
 
+require('dotenv').load();
+
 module.exports = function(){
   var knex = require('knex')({
     client: 'pg',
-    connection: {
-      host     : '127.0.0.1',
-      user     : 'SaundieWeiss',
-      password : 'password',
-      database : 'gpl'
-    },
+    connection: process.env.DATABASE_URL,
     searchPath: 'knex,public',
     debug: true
   });
