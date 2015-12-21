@@ -13,23 +13,35 @@
           <div class="navbar-header">
             <div class="container">
               <!-- REMINDER: change href link when deploying to heroku -->
-              <a class="navbar-brand" href="http://localhost:3000/">
+              <a class="navbar-brand" href="/">
                 GPL
               </a>
               <ul class="nav nav-pills">
                 <!-- REMINDER: change href link when deploying to heroku -->
-                <li role="presentation"><a href="http://localhost:3000/users">USERS</a></li>
+                <li role="presentation"><a href="/users">USERS</a></li>
                 <!-- REMINDER: change href link when deploying to heroku -->
-                <li role="presentation"><a href="http://localhost:3000/matches">MATCHES</a></li>
+                <li role="presentation"><a href="/matches">MATCHES</a></li>
                 <li role="presentation"><a href="#">ABOUT</a></li>
               </ul>
             </div>
           </div>
         </nav>
       </div>
+      <div class ="row">
+        <div class ="col-md-12">
+          <h3><a href = <%= redditUrl0 %>><%= redditTitle0 %></a>  <img src = "ping-pong-paddle.png" alt="paddle"></h3>
+        
+          <h3><a href = <%= redditUrl1 %>><%= redditTitle1 %></a></h3>
+          <h3><a href = <%= redditUrl2 %>><%= redditTitle2 %></a></h3>
+          <h3><a href = <%= redditUrl3 %>><%= redditTitle3 %></a></h3>
+          <img src = <%= redditThumb %> > 
+          <h3><a href = <%= redditUrl4 %>><%= redditTitle4 %></a></h3>
+        </div>
+      </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+
   </body>
 </html>

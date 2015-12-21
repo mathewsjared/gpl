@@ -12,6 +12,7 @@ var home = require('./routes/home');
 
 var app = express();
 
+var http = require('http');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -59,6 +60,8 @@ app.use(function(err, req, res) {
     error: {}
   });
 });
+
+
 
 
 module.exports = app;
