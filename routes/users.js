@@ -58,10 +58,10 @@ router.get('/:id', function(req, res) {
   })
   .select('*').then(function(data){
     var user = {};
-    user.first_name = JSON.stringify(data[0].first_name);
-    user.last_name = JSON.stringify(data[0].last_name);
-    user.username = JSON.stringify(data[0].username);
-    user.email = JSON.stringify(data[0].email);
+    user.first_name = data[0].first_name;
+    user.last_name = data[0].last_name;
+    user.username = data[0].username;
+    user.email = data[0].email;
 
     res.render('userProfile', {
       title: 'Title',
