@@ -1,5 +1,7 @@
 'use strict';
 
+require('dotenv').load();
+
 module.exports = function(){
   var knex = require('knex')({
     client: 'pg',
