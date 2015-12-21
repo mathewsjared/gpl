@@ -28,44 +28,33 @@
         </nav>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-offset-4">
           <h1><%= title %></h1>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Match ID
-                </th>
-                <th>
-                  Player 1
-                </th>
-                <th>
-                  Score 1
-                </th>
-                <th>
-                  Player 2
-                </th>
-                <th>
-                  Score 2
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <% for (var i = 0; i < data.length; i++) { %>
-                <tr>
-                  <td><%= data[i].id %></td>
-                  <td><%= data[i].username1 %></td>
-                  <td><%= data[i].score1 %></td>
-                  <td><%= data[i].username2 %></td>
-                  <td><%= data[i].score2 %></td>
-                </tr>
-              <% } %>
-            </tbody>
-          </table>
         </div>
       </div>
+      <form action='/matches/new' method='post'>
+        <div class="row">
+          <div class="col-md-offset-3">
+            <div class="form-group col-md-3">
+              <label for="userOne">User One</label>
+              <input name="username1" type="text" class="form-control" id="user_id1" placeholder="Username" />
+            </div>
+            <div class="col-md-1">
+              <h2>VS</h2>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="userTwo">User Two</label>
+              <input name="username2" type="text" class="form-control" id="user_id2" placeholder="Username" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-center">
+            <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   </body>

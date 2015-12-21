@@ -28,44 +28,32 @@
         </nav>
       </div>
       <div class="row">
-        <div class="col-md-12">
-          <h1><%= title %></h1>
-          <table>
-            <thead>
-              <tr>
-                <th>
-                  Match ID
-                </th>
-                <th>
-                  Player 1
-                </th>
-                <th>
-                  Score 1
-                </th>
-                <th>
-                  Player 2
-                </th>
-                <th>
-                  Score 2
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <% for (var i = 0; i < data.length; i++) { %>
-                <tr>
-                  <td><%= data[i].id %></td>
-                  <td><%= data[i].username1 %></td>
-                  <td><%= data[i].score1 %></td>
-                  <td><%= data[i].username2 %></td>
-                  <td><%= data[i].score2 %></td>
-                </tr>
-              <% } %>
-            </tbody>
-          </table>
+        <div class="col-md-offset-5">
+          <h2><%= title %></h2>
         </div>
       </div>
+      <form action="/matches/new" method="put">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-3">
+            <label for='userOne'><%= userOne %></label>
+            <input name="score1"type="text" id="score_1" class="form-control" placeholder="user 1 score" />
+          </div>
+          <div class="col-md-1">
+            <h3>to</h3>
+          </div>
+          <div class="col-md-3">
+            <!-- need to populate userTwo var from user db -->
+            <label for='userTwo'><%= userTwo %></label>
+            <input name="score2" type="text" id="score_2" class="form-control" placeholder="user 2 score" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="text-center">
+            <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   </body>

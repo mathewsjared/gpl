@@ -41,32 +41,32 @@ INSERT INTO
   matches
 VALUES
   ( DEFAULT,
-    1,
+    'jaredM123',
     16,
-    2,
+    'ethanW',
     21
   ),
   ( DEFAULT,
-    2,
+    'saundieWWW',
     21,
-    4,
+    'ethanW',
     13
   ),
   ( DEFAULT,
-    1,
+    'ethanW',
     21,
-    5,
+    'lnitz4321',
     10
   ),
   ( DEFAULT,
-    4,
+    'saundieWWW',
     11,
-    5,
+    'iansmith89',
     21
   ),
   ( DEFAULT,
-    1,
+    'iansmith89',
     21,
-    4,
+    'lnitz4321',
     3
   );

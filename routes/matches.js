@@ -1,11 +1,11 @@
 'use strict';
 
 var express = require('express'),
-    router = express.Router();
+     router = express.Router();
 
 var Table = require('../data/knexSetup.js'),
-    Matches = Table('matches');
-
+  Matches = Table('matches'),
+    Users = Table('users');
 // GET ‘/’ - shows all resources TODO
 router.get('/', function(req, res) {
   Matches().select('*')
@@ -19,21 +19,34 @@ router.get('/', function(req, res) {
 
 // GET ‘/new’ - shows new create new resource page TODO
 router.get('/new', function(req, res) {
-  res.send('Takes you to Create new match page');
+  res.render('createMatch', {
+    title : "Create Match"
+  });
 });
+
 
 // POST ‘/new’ - creates individual TODO
 // curl -d "user1=4&score1=21&user2=3&score2=11" http://localhost:3000/matches/new
 router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/matches/new
+
   var match = {};
 
-  match.user_id1 = req.body.user1;
-  match.score1 = req.body.score1;
-  match.user_id2 = req.body.user2;
-  match.score2 = req.body.score2;
+  match.username1 = req.body.username1;
+  match.score1 = -1;
+  match.username2 = req.body.username2;
+  match.score2 = -1;
 
-  Matches().insert(match).then(function(){
-    res.send(JSON.stringify(match) + '\n');
+  Matches().returning('id').insert(match).then(function(newId) {
+    Matches().where({
+      id: Number(newId)
+    })
+    .select('*').then(function() {
+      res.render('currMatch', {
+        title: "Current Match : " + newId,
+        userOne: match.username1,
+        userTwo: match.username2
+      });
+    });
   });
 });
 
