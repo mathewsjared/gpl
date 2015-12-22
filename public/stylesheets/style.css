@@ -1,8 +1,39 @@
+
+/*
+--- COLOR GUIDE ---
+LIME GREEN = #9cd151;
+LIGHT BLUE = #4991c9;
+MINT GREEN = #d1f89c;
+STEEL TEAL = #416174;
+
+*/
+
+.navbar {
+  height: 100px;
+}
+
+.logo {
+  height: 100px;
+}
+
 body {
+  background: #4991c9;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #d1f89c;
+}
+
+p {
+  color: #416174;
+}
+
 a {
-  color: #00B7FF;
+  color: #ffffff;
+}
+
+hr {
+  width: 25%;
 }
