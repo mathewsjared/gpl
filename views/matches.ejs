@@ -33,9 +33,9 @@
               <% for (var i = 0; i < data.length; i++) { %>
                 <tr>
                   <td><%= data[i].id %></td>
-                  <td><%= data[i].username1 %></td>
+                  <td><a href='/users/<%= data[i].username1 %>'><%= data[i].username1 %></a></td>
                   <td><%= data[i].score1 %></td>
-                  <td><%= data[i].username2 %></td>
+                  <td><a href='/users/<%= data[i].username2 %>'><%= data[i].username2 %></a></td>
                   <td><%= data[i].score2 %></td>
                 </tr>
               <% } %>
