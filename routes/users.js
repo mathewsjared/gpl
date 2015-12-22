@@ -6,6 +6,8 @@ var express = require('express'),
 var Table = require('../data/knexSetup.js'),
     Users = Table('users');
 
+var bcrypt = require('bcrypt');
+
 // GET ‘/’ - shows all resources TODO
 router.get('/', function(req, res) {
   Users().select('*')
@@ -33,10 +35,18 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.last_name = req.body.lastName;
   user.email = req.body.email;
   user.username = req.body.username;
-  user.password = req.body.password;
+  user.password = bcrypt.hashSync(req.body.password, 10);
 
-  Users().returning('id').insert(user).then(function(newId){
-    res.redirect('/users/' + newId);
+  Users().where('username', req.body.username).first().then(function(user){
+    if(!user) {
+      Users().insert(user, 'id').then(function(id) {
+        res.cookie('UserID', id[0], { signed: true });
+        res.redirect('/users/' + id);
+      });
+    } else {
+      res.status(409);
+      res.redirect('/login.html?error=You have already signed up. Please login.');
+    }
   });
 });
 
