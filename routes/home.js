@@ -8,5 +8,4 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'GPL Home' });
 });
 
-
 module.exports = router;

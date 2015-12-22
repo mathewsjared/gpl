@@ -12,7 +12,31 @@ var home = require('./routes/home');
 
 var app = express();
 
-// view engine setup
+// var port = process.env.PORT || 3000;
+app.listen(3000);
+
+var hellobot = require('./hellobot');
+
+// body parser middleware
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// test route
+app.get('/', function (req, res) { res.status(200).send('Hello world!') });
+
+//slackbot
+app.post('/hello', hellobot);
+
+// error handler
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(400).send(err.message);
+});
+
+app.listen(3000, function () {
+  console.log('Slack bot listening on port ' + 3000);
+});
+
+//view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
