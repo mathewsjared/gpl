@@ -38,37 +38,9 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
  
   Matches().returning('id').insert(match).then(function(newId) {
     res.redirect('/matches/' + newId);
-  //   Matches().where({
-  //     id: Number(newId)
-  //   })
-  //   .select('*').then(function() {
-  //     res.render('/id', {
-  //       title: "Current Match: " + newId,
-  //       userOne: match.username1,
-  //       userTwo: match.username2
-  //     });
-  //   });
   });
 });
 
-// PUT = updated final scores on matches db
-// postgress command for updated scores by selecting last created id
-// UPDATE matches SET score1 = 21, score2 = 10 WHERE id IN( SELECT max(id) FROM matches);
-router.put('/', function(req, res) {
-  console.log(req);
-  Matches().where({
-    id: 'max(id)',
-  }).update({
-
-    score1 : req.body.score1,
-    score2 : req.body.score2
-
-  }).then(function() {
-    res.render('matches', {
-      title: "All matches"
-    });
-  });
-});
 
 // GET ‘/:id’ - shows individual resource TODO
 router.get('/:id', function(req, res) {
