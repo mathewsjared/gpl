@@ -16,10 +16,10 @@ router.get('/', function(req, res) {
 		});
 
 		redditRes.on('end', function(){
-			
+
 			var redditData = JSON.parse(body);
 			console.log(redditData);
-			var dataArray = []; 
+			var dataArray = [];
 				for (var i = 0; i < 5; i++) {
 					var url = redditData.data.children[i].data.url;
 					var title = redditData.data.children[i].data.title;
@@ -29,10 +29,10 @@ router.get('/', function(req, res) {
 					url: url,
 					thumbnail: thumbnail
 				});
-			
-				
+
+
 				}
-			
+
 				res.render('index', {
 					title: 'GPL',
 					redditUrl0: dataArray[0].url,
@@ -46,13 +46,14 @@ router.get('/', function(req, res) {
 					redditTitle3: dataArray[3].title,
 					redditTitle4: dataArray[4].title,
 					redditThumb: dataArray[3].thumbnail
-				})	
+				});
 			});
-		
+
 		//res.render('index', { title: 'GPL Home' });
 	}).on('error', function(e) {
 		console.log("got an error: ", e);
-
+});
+});
 var Table = require('../data/knexSetup.js'),
   Matches = Table('matches');
 
@@ -74,7 +75,7 @@ router.get('/', function(req, res) {
 			if(users.hasOwnProperty(winner)) {
 				users[winner].wins++;
 			} else {
-				users[winner] = { 
+				users[winner] = {
 					wins : 1,
 					loses : 0,
 					username : winner
@@ -84,7 +85,7 @@ router.get('/', function(req, res) {
 			if(users.hasOwnProperty(loser)) {
 				users[loser].loses++;
 			} else {
-				users[loser] = { 
+				users[loser] = {
 					wins : 0,
 					loses : 1,
 					username : loser
@@ -104,7 +105,7 @@ router.get('/', function(req, res) {
 			standings = standings.slice( 0, 10);
 		}
 
-		res.render('index', { 
+		res.render('index', {
 			title: 'GPL Home',
 			data: standings
 		 });
