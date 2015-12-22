@@ -12,10 +12,9 @@ var home = require('./routes/home');
 
 var app = express();
 
-// var port = process.env.PORT || 3000;
-app.listen(3000);
-
-var hellobot = require('./hellobot');
+var port = process.env.PORT || 3000;
+var hellobot = require('./routes/hellobot');
+// var hellobot = require('./hellobot');
 
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,8 +22,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // test route
 app.get('/', function (req, res) { res.status(200).send('Hello world!') });
 
-//slackbot
-app.post('/hello', hellobot);
 
 // error handler
 app.use(function (err, req, res, next) {
@@ -32,8 +29,8 @@ app.use(function (err, req, res, next) {
   res.status(400).send(err.message);
 });
 
-app.listen(3000, function () {
-  console.log('Slack bot listening on port ' + 3000);
+app.listen(port, function () {
+  console.log('Slack bot listening on port ' + port);
 });
 
 //view engine setup
@@ -52,6 +49,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', home);
 app.use('/users', users);
 app.use('/matches', matches);
+//slackbot
+app.use('/hello', hellobot);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
