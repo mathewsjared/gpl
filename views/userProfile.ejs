@@ -13,17 +13,14 @@
 <body>
   <div class="container">
     <div class="row">
-      <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-          <div class="container">
-            <!-- REMINDER: change href link when deploying to heroku -->
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-header">
             <a class="navbar-brand" href="/">
-              GPL
+              <img class="logo" src="/images/GPL_MintGreen.png" />
             </a>
-            <ul class="nav nav-pills">
-              <!-- REMINDER: change href link when deploying to heroku -->
+            <ul class="nav nav-tabs navbar-left">
               <li role="presentation"><a href="/users">USERS</a></li>
-              <!-- REMINDER: change href link when deploying to heroku -->
               <li role="presentation"><a href="/matches">MATCHES</a></li>
               <li role="presentation"><a href="#">ABOUT</a></li>
             </ul>
@@ -36,6 +33,7 @@
         <h1>User Profile: <%= username %></h1>
         <h3>Name: <%= first %> <%= last %></h3>
         <h3>Email: <%= email %></h3>
+        <a href="<%= edit_link %>">Edit User Information</a>
       </div>
     </div>
   </div>

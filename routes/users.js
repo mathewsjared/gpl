@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
 // GET ‘/new’ - shows new create new resource page TODO
 router.get('/new', function(req, res) {
   res.render('createUser', {
-    title: 'Create new user'
+    title: 'Create New User'
   });
 });
 
@@ -36,18 +36,7 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.password = req.body.password;
 
   Users().returning('id').insert(user).then(function(newId){
-    Users().where({
-      id: Number(newId)
-    })
-    .select('*').then(function(){
-      res.render('userProfile', {
-        title: 'Title',
-        username: user.username,
-        first: user.first_name,
-        last: user.last_name,
-        email: user.email
-      });
-    });
+    res.redirect('/users/' + newId);
   });
 });
 
@@ -68,14 +57,34 @@ router.get('/:id', function(req, res) {
       username: user.username,
       first: user.first_name,
       last: user.last_name,
-      email: user.email
+      email: user.email,
+      edit_link: '/users/' + req.params.id + '/edit'
     });
   });
 });
 
 // GET ‘/:id/edit’ - shows edit page of individual resource TODO
 router.get('/:id/edit', function(req, res) {
-  res.send('takes you to edit individual user page');
+  Users().where({
+    id: Number(req.params.id)
+  })
+  .select('*').then(function(data){
+    var user = {};
+    user.first_name = data[0].first_name;
+    user.last_name = data[0].last_name;
+    user.email = data[0].email;
+    user.username = data[0].username;
+    user.password = data[0].password;
+
+    res.render('editUser', {
+      title: 'Edit User: ' + user.username,
+      first: user.first_name,
+      last: user.last_name,
+      email: user.email,
+      username: user.username,
+      password: user.password
+    });
+  });
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
