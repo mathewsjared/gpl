@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
 // GET ‘/new’ - shows new create new resource page TODO
 router.get('/new', function(req, res) {
   res.render('createUser', {
-    title: 'Create new user'
+    title: 'Create New User'
   });
 });
 
@@ -45,7 +45,8 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
         username: user.username,
         first: user.first_name,
         last: user.last_name,
-        email: user.email
+        email: user.email,
+        edit_link: '/users/' + newId + '/edit'
       });
     });
   });
@@ -68,14 +69,18 @@ router.get('/:id', function(req, res) {
       username: user.username,
       first: user.first_name,
       last: user.last_name,
-      email: user.email
+      email: user.email,
+      edit_link: '/users/' + req.params.id + '/edit'
     });
   });
 });
 
 // GET ‘/:id/edit’ - shows edit page of individual resource TODO
 router.get('/:id/edit', function(req, res) {
-  res.send('takes you to edit individual user page');
+  var id = req.params.id;
+  res.render('createUser', {
+    title: 'Edit User'
+  });
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
