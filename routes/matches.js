@@ -31,21 +31,23 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   var match = {};
 
   match.username1 = req.body.username1;
-  match.score1 = -1;
+     match.score1 = req.body.score1;
   match.username2 = req.body.username2;
-  match.score2 = -1;
+     match.score2 = req.body.score2;
 
+ 
   Matches().returning('id').insert(match).then(function(newId) {
-    Matches().where({
-      id: Number(newId)
-    })
-    .select('*').then(function() {
-      res.render('currMatch', {
-        title: "Current Match: " + newId,
-        userOne: match.username1,
-        userTwo: match.username2
-      });
-    });
+    res.redirect('/matches/' + newId);
+  //   Matches().where({
+  //     id: Number(newId)
+  //   })
+  //   .select('*').then(function() {
+  //     res.render('/id', {
+  //       title: "Current Match: " + newId,
+  //       userOne: match.username1,
+  //       userTwo: match.username2
+  //     });
+  //   });
   });
 });
 
