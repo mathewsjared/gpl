@@ -11,10 +11,10 @@ var bcrypt = require('bcrypt');
 // GET ‘/’ - shows all resources TODO
 router.get('/', function(req, res) {
   Users().select('*')
-  .then(function(data) {
+  .then(function(usersData) {
     res.render('users', {
       title: 'All Users',
-      data: data
+      data: usersData
     });
   });
 });
@@ -47,13 +47,17 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
       res.status(409);
       res.redirect('/login.html?error=You have already signed up. Please login.');
     }
+  user.password = req.body.password;
+
+  Users().insert(user).then(function(){
+    res.redirect('/users/' + req.body.username);
   });
 });
 
 // GET ‘/:id’ - shows individual resource TODO
-router.get('/:id', function(req, res) {
+router.get('/:username', function(req, res) {
   Users().where({
-    id: Number(req.params.id)
+    username: req.params.username
   })
   .select('*').then(function(data){
     var user = {};
@@ -68,15 +72,15 @@ router.get('/:id', function(req, res) {
       first: user.first_name,
       last: user.last_name,
       email: user.email,
-      edit_link: '/users/' + req.params.id + '/edit'
+      edit_link: '/users/' + req.params.username + '/edit'
     });
   });
 });
 
 // GET ‘/:id/edit’ - shows edit page of individual resource TODO
-router.get('/:id/edit', function(req, res) {
+router.get('/:username/edit', function(req, res) {
   Users().where({
-    id: Number(req.params.id)
+    username: req.params.username
   })
   .select('*').then(function(data){
     var user = {};
@@ -98,24 +102,25 @@ router.get('/:id/edit', function(req, res) {
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
-router.put('/:id', function(req, res) { // curl -X PUT -d <queryString> http://localhost:3000/users/<userID>
+router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> http://localhost:3000/users/<userID>
   var user = {};
   Object.keys(req.body).forEach(function(key){
     user[key] = req.body[key];
   });
 
   Users().where({ // 'id', '=', Number(req.params.id)
-    id: Number(req.params.id)
+    username: req.params.username
   })
   .update(user).then(function(){
     res.send('Updated user: ' + req.params.id + '\n');
   });
 });
 
+
 // DELETE ‘/:id’ - removes resource TODO
-router.delete('/:id', function(req, res) { // curl -X DELETE http://localhost:3000/users/<userID>
+router.delete('/:username', function(req, res) { // curl -X DELETE http://localhost:3000/users/<userID>
   Users().where({
-    id: Number(req.params.id)
+    username: req.params.username
   })
   .del().then(function(){
     res.send('Deleted user: ' + req.params.id + '\n');

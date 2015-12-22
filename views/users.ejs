@@ -35,7 +35,7 @@
                   <td><%= data[i].id %></td>
                   <td><%= data[i].first_name %> <%= data[i].last_name %></td>
                   <td><%= data[i].email %></td>
-                  <td><a href="#"><%= data[i].username %></a></td>
+                  <td><a href= '/users/<%= data[i].username %>'><%= data[i].username %></a></td>
                   <td><%= data[i].password %></td>
                 </tr>
               <% } %>
