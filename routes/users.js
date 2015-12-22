@@ -102,6 +102,7 @@ router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> ht
   });
 });
 
+
 // DELETE ‘/:id’ - removes resource TODO
 router.delete('/:username', function(req, res) { // curl -X DELETE http://localhost:3000/users/<userID>
   Users().where({
