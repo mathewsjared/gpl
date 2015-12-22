@@ -2,11 +2,15 @@
 
 var express = require('express'),
     router = express.Router();
-
 var http = require('http');
+var Table = require('../data/knexSetup.js'),
+  Matches = Table('matches');
+
 // GET ‘/’ - shows all resources TODO
 router.get('/', function(req, res) {
-	var url = 'http://www.reddit.com/r/tabletennis.json';
+  var counter = 0;
+  var standings = [];
+  var url = 'http://www.reddit.com/r/tabletennis.json';
 
 	http.get(url, function(redditRes) {
 		var body = '';
@@ -18,7 +22,6 @@ router.get('/', function(req, res) {
 		redditRes.on('end', function(){
 
 			var redditData = JSON.parse(body);
-			console.log(redditData);
 			var dataArray = [];
 				for (var i = 0; i < 5; i++) {
 					var url = redditData.data.children[i].data.url;
@@ -30,35 +33,31 @@ router.get('/', function(req, res) {
 					thumbnail: thumbnail
 				});
 
-
 				}
-
-				res.render('index', {
-					title: 'GPL',
-					redditUrl0: dataArray[0].url,
-					redditUrl1: dataArray[1].url,
-					redditUrl2: dataArray[2].url,
-					redditUrl3: dataArray[3].url,
-					redditUrl4: dataArray[4].url,
-					redditTitle0: dataArray[0].title,
-					redditTitle1: dataArray[1].title,
-					redditTitle2: dataArray[2].title,
-					redditTitle3: dataArray[3].title,
-					redditTitle4: dataArray[4].title,
-					redditThumb: dataArray[3].thumbnail
-				});
+        counter++;
+        if (counter === 2) {
+          res.render('index', {
+      			title: 'GPL Home',
+      			data: standings,
+            redditUrl0: dataArray[0].url,
+            redditUrl1: dataArray[1].url,
+            redditUrl2: dataArray[2].url,
+            redditUrl3: dataArray[3].url,
+            redditUrl4: dataArray[4].url,
+            redditTitle0: dataArray[0].title,
+            redditTitle1: dataArray[1].title,
+            redditTitle2: dataArray[2].title,
+            redditTitle3: dataArray[3].title,
+            redditTitle4: dataArray[4].title,
+            redditThumb: dataArray[3].thumbnail
+      		 });
+        }
 			});
 
 		//res.render('index', { title: 'GPL Home' });
 	}).on('error', function(e) {
 		console.log("got an error: ", e);
 });
-});
-var Table = require('../data/knexSetup.js'),
-  Matches = Table('matches');
-
-// GET ‘/’ - shows all resources TODO
-router.get('/', function(req, res) {
 	Matches().select('*').then(function(matchesData){
 		var users = {};
 		matchesData.forEach(function(match) {
@@ -93,8 +92,6 @@ router.get('/', function(req, res) {
 			}
 		});
 
-		var standings = [];
-
 		for(var key in users) {
 			standings.push(users[key]);
 		}
@@ -105,10 +102,24 @@ router.get('/', function(req, res) {
 			standings = standings.slice( 0, 10);
 		}
 
-		res.render('index', {
-			title: 'GPL Home',
-			data: standings
-		 });
+    counter++;
+    if (counter === 2) {
+      res.render('index', {
+        title: 'GPL Home',
+        data: standings,
+        redditUrl0: dataArray[0].url,
+        redditUrl1: dataArray[1].url,
+        redditUrl2: dataArray[2].url,
+        redditUrl3: dataArray[3].url,
+        redditUrl4: dataArray[4].url,
+        redditTitle0: dataArray[0].title,
+        redditTitle1: dataArray[1].title,
+        redditTitle2: dataArray[2].title,
+        redditTitle3: dataArray[3].title,
+        redditTitle4: dataArray[4].title,
+        redditThumb: dataArray[3].thumbnail
+       });
+    }
 	});
 });
 module.exports = router;
