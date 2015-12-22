@@ -24,7 +24,6 @@ router.get('/new', function(req, res) {
   });
 });
 
-
 // POST ‘/new’ - creates individual TODO
 // curl -d "user1=4&score1=21&user2=3&score2=11" http://localhost:3000/matches/new
 router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/matches/new
@@ -42,10 +41,29 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
     })
     .select('*').then(function() {
       res.render('currMatch', {
-        title: "Current Match : " + newId,
+        title: "Current Match: " + newId,
         userOne: match.username1,
         userTwo: match.username2
       });
+    });
+  });
+});
+
+// PUT = updated final scores on matches db
+// postgress command for updated scores by selecting last created id
+// UPDATE matches SET score1 = 21, score2 = 10 WHERE id IN( SELECT max(id) FROM matches);
+router.put('/', function(req, res) {
+  console.log(req);
+  Matches().where({
+    id: 'max(id)',
+  }).update({
+
+    score1 : req.body.score1,
+    score2 : req.body.score2
+
+  }).then(function() {
+    res.render('matches', {
+      title: "All matches"
     });
   });
 });
