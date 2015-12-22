@@ -47,8 +47,14 @@ router.get('/:id', function(req, res) {
   Matches().where({
     id: req.params.id
   })
-  .select('*').then(function(data){
-    res.send(JSON.stringify(data) + '\n');
+  .select('*').then(function(matchData){
+    res.render( 'matchresult', {
+      title : 'Final result',
+      score1 : matchData[0].score1,
+      score2 : matchData[0].score2,
+      username1 : matchData[0].username1,
+      username2 : matchData[0].username2
+    });
   });
 });
 
