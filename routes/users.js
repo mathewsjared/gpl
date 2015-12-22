@@ -19,7 +19,9 @@ router.get('/', function(req, res) {
 
 // GET ‘/new’ - shows new create new resource page TODO
 router.get('/new', function(req, res) {
-  res.send('Takes you to Create new user page');
+  res.render('createUser', {
+    title: 'Create New User'
+  });
 });
 
 // POST ‘/new’ - creates individual TODO
@@ -33,24 +35,56 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.username = req.body.username;
   user.password = req.body.password;
 
-  Users().insert(user).then(function(){
-    res.send(JSON.stringify(user) + '\n'); // Placeholder
+  Users().returning('id').insert(user).then(function(newId){
+    res.redirect('/users/' + newId);
   });
 });
 
 // GET ‘/:id’ - shows individual resource TODO
 router.get('/:id', function(req, res) {
   Users().where({
-    id: req.params.id
+    id: Number(req.params.id)
   })
   .select('*').then(function(data){
-    res.send(JSON.stringify(data) + '\n'); // Placeholder
+    var user = {};
+    user.first_name = data[0].first_name;
+    user.last_name = data[0].last_name;
+    user.username = data[0].username;
+    user.email = data[0].email;
+
+    res.render('userProfile', {
+      title: 'Title',
+      username: user.username,
+      first: user.first_name,
+      last: user.last_name,
+      email: user.email,
+      edit_link: '/users/' + req.params.id + '/edit'
+    });
   });
 });
 
 // GET ‘/:id/edit’ - shows edit page of individual resource TODO
 router.get('/:id/edit', function(req, res) {
-  res.send('takes you to edit individual user page');
+  Users().where({
+    id: Number(req.params.id)
+  })
+  .select('*').then(function(data){
+    var user = {};
+    user.first_name = data[0].first_name;
+    user.last_name = data[0].last_name;
+    user.email = data[0].email;
+    user.username = data[0].username;
+    user.password = data[0].password;
+
+    res.render('editUser', {
+      title: 'Edit User: ' + user.username,
+      first: user.first_name,
+      last: user.last_name,
+      email: user.email,
+      username: user.username,
+      password: user.password
+    });
+  });
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
@@ -77,6 +111,7 @@ router.delete('/:id', function(req, res) { // curl -X DELETE http://localhost:30
     res.send('Deleted user: ' + req.params.id + '\n');
   });
 });
+
 
 
 module.exports = router;

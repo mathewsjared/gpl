@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ./partials/head %>
+</head>
+
+<body>
+  <div class="container">
+    <% include ./partials/header %>
+    <div class='row'>
+      <div class='col-md-offset-4 col-md-4'>
+        <h1 class="text-center"><%= title %></h1>
+        <hr>
+        <form action='/users/new' method='post'>
+          <div class="form-group">
+            <label for="FirstName">First name</label>
+            <input name="firstName" type="text" class="form-control" id="FirstName" value="<%= first %>">
+          </div>
+          <div class="form-group">
+            <label for="LastName">Last name</label>
+            <input name="lastName"type="text" class="form-control" id="LastName" value="<%= last %>">
+          </div>
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input name="email" type="email" class="form-control" id="Email" value="<%= email %>">
+          </div>
+          <div class="form-group">
+            <label for="UserName">Username</label>
+            <input name="username"type="text" class="form-control" id="UserName" value="<%= username %>">
+          </div>
+          <div class="form-group">
+            <label for="Password">Password</label>
+            <input name="password" type="password" class="form-control" id="Password" value="<%= password %>">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <% include ./partials/footer %>
+  </footer>
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+</body>
+
+</html>

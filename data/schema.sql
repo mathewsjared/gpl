@@ -8,11 +8,12 @@ CREATE TABLE users (
   username VARCHAR(63),
   password VARCHAR(63)
 );
+DROP TABLE IF EXISTS matches;
 
 CREATE TABLE matches (
   id SERIAL PRIMARY KEY,
-  user_id1 SMALLINT,
+  username1 VARCHAR(63),
   score1 SMALLINT,
-  user_id2 SMALLINT,
+  username2 VARCHAR(63),
   score2 SMALLINT
 );

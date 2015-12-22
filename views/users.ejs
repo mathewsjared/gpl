@@ -1,46 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include ./partials/head %>
   </head>
   <body>
     <div class="container">
-      <div class="row">
-        <nav class="navbar navbar-inverse">
-          <div class="navbar-header">
-            <div class="container">
-              <!-- REMINDER: change href link when deploying to heroku -->
-              <a class="navbar-brand" href="/">
-                GPL
-              </a>
-              <ul class="nav nav-pills">
-                <!-- REMINDER: change href link when deploying to heroku -->
-                <li role="presentation"><a href="/users">USERS</a></li>
-                <!-- REMINDER: change href link when deploying to heroku -->
-                <li role="presentation"><a href="/matches">MATCHES</a></li>
-                <li role="presentation"><a href="#">ABOUT</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
+      <% include ./partials/header %>
       <div class="row">
         <div class="col-md-12">
           <h1><%= title %></h1>
-          <table>
+          <table class="table table-condensed table-hover">
             <thead>
               <tr>
                 <th>
                   User ID
                 </th>
                 <th>
-                  First Name
-                </th>
-                <th>
-                  Last Name
+                  Name
                 </th>
                 <th>
                   Email
@@ -57,10 +33,9 @@
               <% for (var i = 0; i < data.length; i++) { %>
                 <tr>
                   <td><%= data[i].id %></td>
-                  <td><%= data[i].first_name %></td>
-                  <td><%= data[i].last_name %></td>
+                  <td><%= data[i].first_name %> <%= data[i].last_name %></td>
                   <td><%= data[i].email %></td>
-                  <td><%= data[i].username %></td>
+                  <td><a href="#"><%= data[i].username %></a></td>
                   <td><%= data[i].password %></td>
                 </tr>
               <% } %>
@@ -68,7 +43,9 @@
           </table>
         </div>
       </div>
-
+      <footer>
+        <% include ./partials/footer %>
+      </footer>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   </body>
