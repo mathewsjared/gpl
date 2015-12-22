@@ -50,9 +50,13 @@ router.get('/', function(req, res) {
 		standings.sort(function(userA,userB) {
 			return userB.wins - userA.wins;
 		});
+		if(standings > 10) {
+			standings = standings.slice( 0, 10);
+		}
 
 		res.render('index', { 
-			title: 'GPL Home'
+			title: 'GPL Home',
+			data: standings
 		 });
 	});
 });
