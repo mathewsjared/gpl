@@ -6,6 +6,35 @@
   <body>
     <div class="container">
       <% include ./partials/header %>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Standings</h1>
+          <table class="table table-condensed table-hover">
+            <thead>
+              <tr>
+                <th>
+                  Username
+                </th>
+                <th>
+                  Wins
+                </th>
+                <th>
+                  Losses
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                  <td><%= data[i].username %></td>
+                  <td><%= data[i].wins %></td>
+                  <td><%= data[i].loses %></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <footer>
       <% include ./partials/footer %>
