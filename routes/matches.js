@@ -38,56 +38,58 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   match.username2 = req.body.username2;
   match.score2 = req.body.score2;
 
-  //Slackbot - posting results to Slack channel when a user logs a match
-  //data that will be sent to the channel. http request requires a string 
-  var postData = JSON.stringify(
-    {
-      "attachments": [
-          {
-              "fallback": "Match just finished - <https://galvanize-ping-pong-league.herokuapp.com/matches|Click to see current standings>",
-              "text": "Match just finished! - <https://galvanize-ping-pong-league.herokuapp.com/matches|Click for current standings>",
-              "fields": [
-                  {
-                      "title": match.username1,
-                      "value": match.score1,
-                      "short": true
-                  },
-                  {
-                      "title": match.username2,
-                      "value": match.score2,
-                      "short": true
-                  }
-              ],
-              "color": "#F35A00"
-          }
-      ]
-  }
-);
-//Argument that is passed into the request
-  var postOptions = {
-    hostname: 'hooks.slack.com',
-    port: 443,
-    path: '/services/T027GBYPB/B0H5E7RKJ/AYnWoFYnMQY3omEEgpmX45ta',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Content-Length': postData.length
-    }
-  };
-
-//setting up an instance of the request
-  var slackReq = https.request(postOptions, function(slackRes) {
-//status to make sure it completed
-    console.log('Status:' + slackRes.statusCode);
-  });
-  slackReq.on('error', function(e) {
-    console.log('problem with request: ' + e.message);
-  });
-//calling the http request with the data we set up
-  slackReq.write(postData);
-  slackReq.end();
-
   Matches().returning('id').insert(match).then(function(newId) {
+    //Slackbot - posting results to Slack channel when a user logs a match
+    //data that will be sent to the channel. http request requires a string
+    var postData = JSON.stringify(
+      {
+        "attachments": [
+            {
+                "fallback": "<https://galvanize-ping-pong-league.herokuapp.com/matches/"
+                + newId + "|Match just finished!>",
+                "text": "<https://galvanize-ping-pong-league.herokuapp.com/matches/"
+                + newId + "|Match just finished!>",
+                "fields": [
+                    {
+                        "title": match.username1,
+                        "value": match.score1,
+                        "short": true
+                    },
+                    {
+                        "title": match.username2,
+                        "value": match.score2,
+                        "short": true
+                    }
+                ],
+                "color": "#F35A00"
+            }
+        ]
+    }
+  );
+  //Argument that is passed into the request
+    var postOptions = {
+      hostname: 'hooks.slack.com',
+      port: 443,
+      path: '/services/T027GBYPB/B0H5E7RKJ/AYnWoFYnMQY3omEEgpmX45ta',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': postData.length
+      }
+    };
+
+  //setting up an instance of the request
+    var slackReq = https.request(postOptions, function(slackRes) {
+  //status to make sure it completed
+      console.log('Status:' + slackRes.statusCode);
+    });
+    slackReq.on('error', function(e) {
+      console.log('problem with request: ' + e.message);
+    });
+  //calling the http request with the data we set up
+    slackReq.write(postData);
+    slackReq.end();
+
     res.redirect('/matches/' + newId);
   });
 });
