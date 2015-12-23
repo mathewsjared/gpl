@@ -34,7 +34,11 @@ app.use('/matches', matches);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.render('error', {
+    title: "GPPL Error",
+    message: "OOPPPSSSS! looks like this page doesn't exist!",
+    error: {}
+  });
 });
 
 // error handlers
@@ -51,7 +55,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
+// production error handlers
 // no stacktraces leaked to user
 app.use(function(err, req, res) {
   res.status(err.status || 500);
