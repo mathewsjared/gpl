@@ -16,10 +16,47 @@ STEEL TEAL = #416174;
   height: 100px;
 }
 
+.description {
+  font-size: 1.15em;
+  padding: 0 18%;
+}
+
+.home-title {
+  font-size: 3.5em;
+}
+
+.small-hr {
+  width: 161.82px;
+}
+
+.standings {
+  margin-bottom: 60px;
+}
+
+.standings th {
+  color: #2b556d;
+}
+
+.standings tbody td {
+  font-size: 1.6182em;
+}
+
+.standings tbody tr:nth-child(odd) {
+  background: #579dd4;
+}
+
+.standings tbody tr:hover {
+  background: #578db7;
+}
+
 body {
   background: #4991c9;
-  padding: 50px;
+  padding-top: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+footer {
+  margin: 60px 0 20px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,9 +64,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  color: #416174;
+  color: #2b556d;
 }
 
 a {
   color: #ffffff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #d1f89c;
 }
