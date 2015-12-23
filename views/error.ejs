@@ -5,9 +5,15 @@
 </head>
 <body>
 	<% include ./partials/header %>
-	<h1><%= message %></h1>
-	<h2><%= error.status %></h2>
-	<p><%= error.stack %></p>
-	<% include ./partials/footer %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+				<h1><%= message %></h1>
+				<h2><%= error.status %></h2>
+				<p><%= error.stack %></p>
+			</div>
+		</div>
+		<% include ./partials/footer %>
+	</div>
 </body>
 </html>

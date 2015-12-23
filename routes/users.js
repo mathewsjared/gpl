@@ -99,7 +99,11 @@ router.get('/:username/edit', function(req, res) {
         });
       });
   } else {
-    res.send('You do not have permission to edit this user...');
+    res.render('error', {
+      title: 'ERROR: You do not have permission',
+      message: 'You do not have permission to update this user',
+      error: 404
+    });
   }
 });
 
