@@ -12,11 +12,14 @@
         </ul>
         <form class="navbar-form navbar-left" role="form" action='/login' method='post'>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="text" name="username" class="form-control" placeholder="Username">
+            <input type="password" name="password" class="form-control" placeholder="Password">
           </div>
-          <button type="button" class="btn btn-default navbar-btn">LOGIN</button>
+          <button type="submit" class="btn btn-default navbar-btn">LOGIN</button>
         </form>
+        <a class="navbar-left" href="/logout">
+          LOGOUT
+        </a>
       </div>
     </div>
   </nav>
