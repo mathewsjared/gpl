@@ -101,6 +101,7 @@ router.get('/:id', function(req, res) {
     id: req.params.id
   })
   .select('*').then(function(matchData){
+    console.log(matchData[0].id);
     res.render( 'matchresult', {
       title : 'Final result',
       score1 : matchData[0].score1,

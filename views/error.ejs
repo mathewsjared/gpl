@@ -1,3 +1,13 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ./partials/head %>
+</head>
+<body>
+	<% include ./partials/header %>
+	<h1><%= message %></h1>
+	<h2><%= error.status %></h2>
+	<p><%= error.stack %></p>
+	<% include ./partials/footer %>
+</body>
+</html>
