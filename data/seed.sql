@@ -4,69 +4,93 @@ VALUES
   ( DEFAULT,
     'Ian',
     'Smith',
-    'iansmith1026@gmail.com',
-    'iansmith89',
-    '67%$fgdh'
+    'ian@gppl.com',
+    'TheMaster',
+    '1234'
   ),
   ( DEFAULT,
     'Ethan',
     'Weeks',
-    'ethan@gpl.com',
-    'ethanW',
-    '4367382'
+    'ethan@gppl.com',
+    'youngGrasshopper',
+    '4321'
   ),
   ( DEFAULT,
     'Jared',
     'Mathews',
-    'jared@gpl.com',
-    'jaredM123',
-    '878%%^G'
+    'jared@gppl.com',
+    'froNazzty',
+    '5678'
   ),
   ( DEFAULT,
     'Lori',
     'Nitzel',
-    'lnitz@gpl.com',
-    'lnitz4321',
-    'GHJ^&*'
+    'lnitz@gppl.com',
+    'veganWienerNitzel',
+    '9876'
   ),
   ( DEFAULT,
     'Saundie',
     'Weiss',
-    'saundie@gpl.com',
-    'saundieWWW',
-    'lkj&*^%'
+    'saundie@gppl.com',
+    'superStar',
+    '0987'
   );
 
 INSERT INTO
   matches
 VALUES
   ( DEFAULT,
-    'jaredM123',
+    'TheMaster',
     16,
-    'ethanW',
+    'youngGrasshopper',
     21
   ),
   ( DEFAULT,
-    'saundieWWW',
+    'froNazzty',
     21,
-    'ethanW',
+    'veganWienerNitzel',
     13
   ),
   ( DEFAULT,
-    'ethanW',
+    'superStar',
     21,
-    'lnitz4321',
+    'TheMaster',
     10
   ),
   ( DEFAULT,
-    'saundieWWW',
+    'youngGrasshopper',
     11,
-    'iansmith89',
+    'froNazzty',
     21
   ),
   ( DEFAULT,
-    'iansmith89',
+    'veganWienerNitzel',
     21,
-    'lnitz4321',
+    'superStar',
     3
+  ),
+  ( DEFAULT,
+    'TheMaster',
+    21,
+    'froNazzty',
+    17
+  ),
+  ( DEFAULT,
+    'youngGrasshopper',
+    12,
+    'superStar',
+    21
+  ),
+  ( DEFAULT,
+    'froNazzty',
+    21,
+    'TheMaster',
+    10
+  ),
+  ( DEFAULT,
+    'veganWienerNitzel',
+    12,
+    'youngGrasshopper',
+    21
   );

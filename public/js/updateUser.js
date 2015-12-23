@@ -15,7 +15,7 @@ button.addEventListener('click', function(event) {
     password: form.password.value
   };
 
-  var url = 'http://localhost:3000/users/' + oriUsername;
+  var url = 'https://galvanize-ping-pong-league.herokuapp.com/users/' + oriUsername;
 
   $.put(url, user, function(data){
     window.location.replace(data + user.username);

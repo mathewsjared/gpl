@@ -27,8 +27,8 @@ router.get('/new', function(req, res) {
 });
 
 // POST ‘/new’ - creates individual TODO
-// curl -d "firstName=Jimmy&lastName=Kary&email=jimmy@gpl.com&username=jimster&password=sdjhfsl" http://localhost:3000/users/new
-router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/users/new
+// curl -d "firstName=Jimmy&lastName=Kary&email=jimmy@gpl.com&username=jimster&password=sdjhfsl" https://galvanize-ping-pong-league.herokuapp.com/users/new
+router.post('/new', function(req, res) { // curl -d <queryString> https://galvanize-ping-pong-league.herokuapp.com/users/new
   var user = {};
 
   user.first_name = req.body.firstName;
@@ -108,8 +108,8 @@ router.get('/:username/edit', function(req, res) {
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
-//curl -X PUT -d 'username=thing' http://localhost:3000/users/jaredM123
-router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> http://localhost:3000/users/<userID>
+//curl -X PUT -d 'username=thing' https://galvanize-ping-pong-league.herokuapp.com/users/jaredM123
+router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> https://galvanize-ping-pong-league.herokuapp.com/users/<userID>
   var user = {};
   user.first_name = req.body.firstName;
   user.last_name = req.body.lastName;
@@ -121,14 +121,14 @@ router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> ht
       username: req.params.username
     })
     .update(user).then(function() {
-      res.send('http://localhost:3000/users/');
+      res.send('https://galvanize-ping-pong-league.herokuapp.com/users/');
       // res.redirect('/users/:username');
     });
 });
 
 
 // DELETE ‘/:id’ - removes resource TODO
-router.delete('/:username', function(req, res) { // curl -X DELETE http://localhost:3000/users/<userID>
+router.delete('/:username', function(req, res) { // curl -X DELETE https://galvanize-ping-pong-league.herokuapp.com/users/<userID>
   Users().where({
       username: req.params.username
     })

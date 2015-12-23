@@ -28,8 +28,8 @@ router.get('/new', function(req, res) {
 });
 
 // POST ‘/new’ - creates individual TODO
-// curl -d "user1=4&score1=21&user2=3&score2=11" http://localhost:3000/matches/new
-router.post('/new', function(req, res) { // curl -d <queryString> http://localhost:3000/matches/new
+// curl -d "user1=4&score1=21&user2=3&score2=11" https://galvanize-ping-pong-league.herokuapp.com/matches/new
+router.post('/new', function(req, res) { // curl -d <queryString> https://galvanize-ping-pong-league.herokuapp.com/matches/new
 
   var match = {};
 
@@ -118,7 +118,7 @@ router.get('/:id/edit', function(req, res) {
 });
 
 // PUT ‘/:id’ - updates individual resource TODO
-router.put('/:id', function(req, res) { // curl -X PUT -d <queryString> http://localhost:3000/matches/<idNumber>
+router.put('/:id', function(req, res) { // curl -X PUT -d <queryString> https://galvanize-ping-pong-league.herokuapp.com/matches/<idNumber>
   var match = {};
   Object.keys(req.body).forEach(function(key) {
     match[key] = req.body[key];
@@ -133,7 +133,7 @@ router.put('/:id', function(req, res) { // curl -X PUT -d <queryString> http://l
 });
 
 // DELETE ‘/:id’ - removes resource TODO
-router.delete('/:id', function(req, res) { // curl -X DELETE http://localhost:3000/matches/<idNumber>
+router.delete('/:id', function(req, res) { // curl -X DELETE https://galvanize-ping-pong-league.herokuapp.com/matches/<idNumber>
   Matches().where({
       id: Number(req.params.id)
     })
