@@ -37,20 +37,18 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.username = req.body.username;
   user.password = bcrypt.hashSync(req.body.password, 10);
 
-  Users().where('username', req.body.username).first().then(function(user){
-    if(!user) {
-      Users().insert(user, 'id').then(function(id) {
-        res.cookie('UserID', id[0], { signed: true });
-        res.redirect('/users/' + id);
+  Users().where({
+    username: req.params.username
+  }).first().then(function(userExists){
+    if(!userExists) {
+      Users().insert(user, 'username').then(function(username) {
+        res.cookie('Username', username[0], { signed: true });
+        res.redirect('/users/' + username);
       });
     } else {
       res.status(409);
       res.redirect('/login.html?error=You have already signed up. Please login.');
     }
-  user.password = req.body.password;
-
-  Users().insert(user).then(function(){
-    res.redirect('/users/' + req.body.username);
   });
 });
 
