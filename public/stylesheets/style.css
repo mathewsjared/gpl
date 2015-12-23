@@ -17,7 +17,7 @@ STEEL TEAL = #416174;
 }
 
 .description {
-  font-size: 1.15em;
+  font-size: 1.25em;
   padding: 0 18%;
 }
 
@@ -30,7 +30,7 @@ STEEL TEAL = #416174;
 }
 
 .standings {
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .standings th {
@@ -75,7 +75,7 @@ STEEL TEAL = #416174;
 body {
   background: #4991c9;
   padding-top: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px 'Cabin', Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -87,7 +87,13 @@ footer {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 1.75px;
+  font-family: 'Droid Sans';
   color: #d1f89c;
+}
+
+h1 {
+  font-weight: bold;
 }
 
 p {
