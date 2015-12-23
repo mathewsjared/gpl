@@ -108,7 +108,7 @@ router.get('/', function(req, res) {
     counter++;
     if (counter === 2) {
       res.render('index', {
-        title: 'GPL Home',
+        title: 'GPPL Home',
         data: standings,
         redditUrl0: dataArray[0].url,
         redditUrl1: dataArray[1].url,

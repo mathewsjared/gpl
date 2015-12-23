@@ -16,20 +16,99 @@ STEEL TEAL = #416174;
   height: 100px;
 }
 
+.description {
+  font-size: 1.25em;
+  padding: 0 18%;
+}
+
+.home-title {
+  font-size: 3.5em;
+}
+
+.small-hr {
+  width: 161.82px;
+}
+
+.standings {
+  margin-bottom: 30px;
+}
+
+.standings th {
+  color: #2b556d;
+}
+
+.standings tbody td {
+  font-size: 1.6182em;
+}
+
+.standings tbody tr:nth-child(odd) {
+  background: #579dd4;
+}
+
+.standings tbody tr:hover {
+  background: #578db7;
+}
+
+.well {
+  margin-top: 30px;
+  background: #578db7;
+}
+
+.new-match-user {
+  height: 50px;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.scorecard {
+  background: #578db7;
+  color: #fff;
+  height: 400px;
+  text-align: center;
+  font-size: 18em;
+}
+
+.login-field {
+  margin-bottom: 15px;
+}
+
+.nav a:hover {
+  color: #2b556d;
+}
+
 body {
   background: #4991c9;
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-top: 50px;
+  font: 16px 'Cabin', Helvetica, Arial, sans-serif;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+footer {
+  margin: 60px 0 20px 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 1.75px;
+  font-family: 'Droid Sans';
   color: #d1f89c;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 p {
-  color: #416174;
+  color: #2b556d;
 }
 
 a {
   color: #ffffff;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #d1f89c;
 }

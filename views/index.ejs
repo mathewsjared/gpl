@@ -5,62 +5,69 @@
   </head>
   <body>
     <div class="container">
-      <% include ./partials/header %>
-      <div class="row">
-        <div class="col-md-12">
-          <h1>Standings</h1>
-          <table class="table table-condensed table-hover">
-            <thead>
-              <tr>
-                <th>
-                  Username
-                </th>
-                <th>
-                  Wins
-                </th>
-                <th>
-                  Losses
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <% for (var i = 0; i < data.length; i++) { %>
+      <header>
+        <% include ./partials/header %>
+      </header>
+      <main>
+        <div class="row">
+          <div class = "col-md-8">
+            <table class="table table-condensed standings">
+              <thead>
                 <tr>
-                  <td><a href='/users/<%= data[i].username %>' ><%= data[i].username %></a></td>
-                  <td><%= data[i].wins %></td>
-                  <td><%= data[i].loses %></td>
+                  <th>
+                    USERNAME
+                  </th>
+                  <th>
+                    W
+                  </th>
+                  <th>
+                    L
+                  </th>
                 </tr>
-              <% } %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% for (var i = 0; i < data.length; i++) { %>
+                  <tr>
+                    <td><a href='/users/<%= data[i].username %>' ><%= data[i].username %></a></td>
+                    <td><%= data[i].wins %></td>
+                    <td><%= data[i].loses %></td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+            <h1 class="home-title text-center">Welcome to the GPPL!</h1>
+            <hr class="small-hr">
+            <p class="description">
+              The Galvanize Ping Pong League (GPPL) was created as a class project by a group of G17 (Fort Collins) students who like to play ping pong. The application allows you to create a user profile, enter your game stats, and see your rank (based on wins and losses) by Galvanize location. Have fun and play hard!
+            </p>
+          </div>
+          <div class = "col-md-4">
+            <h2>Table Tennis on Reddit</h2>
+            <ul>
+              <li>
+                <h4><a href = <%= redditUrl0 %>><%= redditTitle0 %></a></h4>
+              </li>
+              <li>
+                <h4><a href = <%= redditUrl1 %>><%= redditTitle1 %></a></h4>
+              </li>
+              <li>
+                <h4><a href = <%= redditUrl2 %>><%= redditTitle2 %></a></h4>
+              </li>
+              <li>
+                <h4><a href = <%= redditUrl3 %>><%= redditTitle3 %></a></h4>
+              </li>
+              <li>
+                <h4><a href = <%= redditUrl4 %>><%= redditTitle4 %></a></h4>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class ="row">
-        <div class = "col-md-12 text-center">
-          <h1>Welcome to GPL</h1>
-            <p>Tempor in in vitae vestibulum, non fusce dictum metus, porta viverra lectus adipiscing et, a sit. Lacus justo mi consectetuer arcu wisi ipsum, donec scelerisque eros, maecenas pretium curae, ornare turpis, justo lorem phasellus quis etiam. A faucibus, sapien et, varius odio wisi quam odio interdum nec. Tellus mattis sit aliquet vulputate. Justo leo, mauris vitae nibh, montes dolor, dapibus.</p>
-        </div>
-      </div>
-      <div class = "row">
-        <div class = "col-md-8">
-        </div>
-        <div class = "col-md-4">
-          <h2>Table Tennis on Reddit</h2>
-          <h4><a href = <%= redditUrl0 %>><%= redditTitle0 %></a></h4> 
-          <h4><a href = <%= redditUrl1 %>><%= redditTitle1 %></a></h4>
-          <h4><a href = <%= redditUrl2 %>><%= redditTitle2 %></a></h4>
-          <h4><a href = <%= redditUrl3 %>><%= redditTitle3 %></a></h4>
-          <h4><a href = <%= redditUrl4 %>><%= redditTitle4 %></a></h4>
-        </div>
-      <div class ="row">
-      
-      </div>
+      </main>
+      <footer>
+        <% include ./partials/footer %>
+      </footer>
     </div>
-    <footer>
-      <% include ./partials/footer %>
-    </footer>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
-
   </body>
 </html>

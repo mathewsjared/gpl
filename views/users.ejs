@@ -8,24 +8,22 @@
       <% include ./partials/header %>
       <div class="row">
         <div class="col-md-12">
-          <h1><%= title %></h1>
-          <table class="table table-condensed table-hover">
+          <h1 class="text-center"><%= title %></h1>
+          <hr class="small-hr">
+          <table class="table table-condensed standings">
             <thead>
               <tr>
                 <th>
-                  User ID
+                  USER ID
                 </th>
                 <th>
-                  Name
+                  NAME
                 </th>
                 <th>
-                  Email
+                  USERNAME
                 </th>
                 <th>
-                  Username
-                </th>
-                <th>
-                  Password
+                  EMAIL
                 </th>
               </tr>
             </thead>
@@ -34,13 +32,15 @@
                 <tr>
                   <td><%= data[i].id %></td>
                   <td><%= data[i].first_name %> <%= data[i].last_name %></td>
-                  <td><%= data[i].email %></td>
                   <td><a href= '/users/<%= data[i].username %>'><%= data[i].username %></a></td>
-                  <td><%= data[i].password %></td>
+                  <td><%= data[i].email %></td>
                 </tr>
               <% } %>
             </tbody>
           </table>
+          <form class="text-center" role="form" action='/users/new' method='get'>
+            <button type="submit" class="btn btn-primary btn-lg">CREATE A USER</button>
+          </form>
         </div>
       </div>
       <footer>

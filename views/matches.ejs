@@ -8,24 +8,25 @@
       <% include ./partials/header %>
       <div class="row">
         <div class="col-md-12">
-          <h1><%= title %></h1>
-          <table class="table table-condensed table-hover">
+          <h1 class="text-center"><%= title %></h1>
+          <hr class="small-hr">
+          <table class="table table-condensed standings">
             <thead>
               <tr>
                 <th>
-                  Match ID
+                  MATCH ID
                 </th>
                 <th>
-                  Player 1
+                  PLAYER 1
                 </th>
                 <th>
-                  Score 1
+
                 </th>
                 <th>
-                  Player 2
+
                 </th>
                 <th>
-                  Score 2
+                  PLAYER 2
                 </th>
               </tr>
             </thead>
@@ -35,8 +36,8 @@
                   <td><%= data[i].id %></td>
                   <td><a href='/users/<%= data[i].username1 %>'><%= data[i].username1 %></a></td>
                   <td><%= data[i].score1 %></td>
-                  <td><a href='/users/<%= data[i].username2 %>'><%= data[i].username2 %></a></td>
                   <td><%= data[i].score2 %></td>
+                  <td><a href='/users/<%= data[i].username2 %>'><%= data[i].username2 %></a></td>
                 </tr>
               <% } %>
             </tbody>
@@ -44,7 +45,7 @@
         </div>
       </div>
       <form class="text-center" role="form" action='/matches/new' method='get'>
-        <button type="submit" class="btn button-default btn-lg">START A NEW GAME</button>
+        <button type="submit" class="btn btn-primary btn-lg">START A NEW MATCH</button>
       </form>
     </div>
     <footer>

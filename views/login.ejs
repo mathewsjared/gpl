@@ -7,13 +7,15 @@
     <div class="container">
       <% include ./partials/header %>
       <div class="row">
-        <div class="col-md-offset-4 col-md-4 text-center">
+        <h1 class="text-center">User Login</h1>
+        <hr class="small-hr">
+        <div class="col-md-offset-4 col-md-4 text-center well">
           <form class="navbar-form navbar-left" role="form" action='/login' method='post'>
             <div class="form-group">
-              <input type="text" name="username" class="form-control" placeholder="Username">
-              <input type="password" name="password" class="form-control" placeholder="Password">
+              <input type="text" name="username" class="form-control login-field" placeholder="Username" requried>
+              <input type="password" name="password" class="form-control login-field" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-default navbar-btn">LOGIN</button>
+            <button type="submit" class="btn btn-primary">LOGIN</button>
           </form>
         </div>
       </div>

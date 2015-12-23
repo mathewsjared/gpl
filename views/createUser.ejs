@@ -11,29 +11,29 @@
     <div class='row'>
       <div class='col-md-offset-4 col-md-4'>
         <h1 class="text-center"><%= title %></h1>
-        <hr>
+        <hr class="small-hr">
         <form action='/users/new' method='post'>
           <div class="form-group">
             <label for="FirstName">First name</label>
-            <input name="firstName" type="text" class="form-control" id="FirstName" placeholder="First name">
+            <input name="firstName" type="text" class="form-control" id="FirstName" required>
           </div>
           <div class="form-group">
             <label for="LastName">Last name</label>
-            <input name="lastName"type="text" class="form-control" id="LastName" placeholder="Last name">
+            <input name="lastName"type="text" class="form-control" id="LastName" required>
           </div>
           <div class="form-group">
             <label for="Email">Email</label>
-            <input name="email" type="email" class="form-control" id="Email" placeholder="Email">
+            <input name="email" type="email" class="form-control" id="Email" required>
           </div>
           <div class="form-group">
             <label for="UserName">Username</label>
-            <input name="username"type="text" class="form-control" id="UserName" placeholder="Username">
+            <input name="username"type="text" class="form-control" id="UserName" required>
           </div>
           <div class="form-group">
             <label for="Password">Password</label>
-            <input name="password" type="password" class="form-control" id="Password" placeholder="Password">
+            <input name="password" type="password" class="form-control" id="Password" required>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-primary">SUBMIT</button>
         </form>
       </div>
     </div>
