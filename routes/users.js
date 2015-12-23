@@ -42,7 +42,7 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   }).first().then(function(userExists){
     if(!userExists) {
       Users().insert(user, 'username').then(function(username) {
-        res.cookie('Username', user.username, { signed: true });
+        res.cookie('username', user.username, { signed: true });
         res.redirect('/users/' + username);
       });
     } else {

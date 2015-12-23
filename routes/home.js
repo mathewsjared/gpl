@@ -150,7 +150,7 @@ router.post('/login', function(req, res){
 });
 
 router.get('/logout', function(req, res){
-  res.clearCookie('Username');
+  res.clearCookie('username');
   res.redirect('/');
 });
 
