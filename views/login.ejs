@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ./partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <% include ./partials/header %>
+      <div class="row">
+        <div class="col-md-offset-4 col-md-4 text-center">
+          <form class="navbar-form navbar-left" role="form" action='/login' method='post'>
+            <div class="form-group">
+              <input type="text" name="username" class="form-control" placeholder="Username">
+              <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default navbar-btn">LOGIN</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <% include ./partials/footer %>
+    </footer>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  </body>
+</html>

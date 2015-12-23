@@ -6,6 +6,8 @@ var express = require('express'),
 var Table = require('../data/knexSetup.js'),
   Users = Table('users');
 
+var bcrypt = require('bcrypt');
+
 // GET ‘/’ - shows all resources TODO
 router.get('/', function(req, res) {
   Users().select('*')
@@ -33,10 +35,20 @@ router.post('/new', function(req, res) { // curl -d <queryString> http://localho
   user.last_name = req.body.lastName;
   user.email = req.body.email;
   user.username = req.body.username;
-  user.password = req.body.password;
+  user.password = bcrypt.hashSync(req.body.password, 10);
 
-  Users().insert(user).then(function() {
-    res.redirect('/users/' + req.body.username);
+  Users().where({
+    username: req.params.username
+  }).first().then(function(userExists){
+    if(!userExists) {
+      Users().insert(user, 'username').then(function(username) {
+        res.cookie('Username', user.username, { signed: true });
+        res.redirect('/users/' + username);
+      });
+    } else {
+      res.status(409);
+      res.redirect('/login.html?error=You have already signed up. Please login.');
+    }
   });
 });
 
@@ -65,26 +77,30 @@ router.get('/:username', function(req, res) {
 
 // GET ‘/:id/edit’ - shows edit page of individual resource TODO
 router.get('/:username/edit', function(req, res) {
-  Users().where({
-      username: req.params.username
-    })
-    .select('*').then(function(data) {
-      var user = {};
-      user.first_name = data[0].first_name;
-      user.last_name = data[0].last_name;
-      user.email = data[0].email;
-      user.username = data[0].username;
-      user.password = data[0].password;
+  if(req.signedCookies.Username === req.params.username) {
+    Users().where({
+        username: req.params.username
+      })
+      .select('*').then(function(data) {
+        var user = {};
+        user.first_name = data[0].first_name;
+        user.last_name = data[0].last_name;
+        user.email = data[0].email;
+        user.username = data[0].username;
+        user.password = data[0].password;
 
-      res.render('editUser', {
-        title: 'Edit User: ' + user.username,
-        first: user.first_name,
-        last: user.last_name,
-        email: user.email,
-        username: user.username,
-        password: user.password
+        res.render('editUser', {
+          title: 'Edit User: ' + user.username,
+          first: user.first_name,
+          last: user.last_name,
+          email: user.email,
+          username: user.username,
+          password: user.password
+        });
       });
-    });
+  } else {
+    res.send('You do not have permission to edit this user...');
+  }
 });
 
 // PUT ‘/:id’ - updates individual resource TODO

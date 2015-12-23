@@ -4,7 +4,10 @@ var express = require('express'),
     router = express.Router();
 var http = require('http');
 var Table = require('../data/knexSetup.js'),
-  Matches = Table('matches');
+  Matches = Table('matches'),
+  Users = Table('users');
+
+var bcrypt = require('bcrypt');
 
 // GET ‘/’ - shows all resources TODO
 router.get('/', function(req, res) {
@@ -122,4 +125,39 @@ router.get('/', function(req, res) {
     }
 	});
 });
+
+router.get('/login', function(req, res) {
+  res.render('login', {
+    title: 'User Login'
+  });
+});
+
+router.post('/login', function(req, res){
+  Users().where({
+    username: req.body.username,
+  }).first().then(function(user){
+    if(user) {
+      if(bcrypt.compareSync(req.body.password, user.password)) {
+        res.cookie('username', user.username, { signed: true });
+        res.redirect('/users/' + user.username);
+      } else {
+        res.redirect('ERROR: Invalid Username or Password.');
+      }
+    } else {
+      res.redirect('ERROR: No user with that email.');
+    }
+  });
+});
+
+router.get('/logout', function(req, res){
+  res.clearCookie('Username');
+  res.redirect('/');
+});
+
+router.get('/about', function(req, res) {
+  res.render('about', {
+    title: 'About GPPL'
+  });
+});
+
 module.exports = router;
