@@ -96,7 +96,6 @@ router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> ht
   user.email = req.body.email;
   user.username = req.body.username;
   user.password = req.body.password;
-console.log(req.params.username);
 
   Users().where({ // 'id', '=', Number(req.params.id)
       username: req.params.username
