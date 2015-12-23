@@ -126,6 +126,12 @@ router.get('/', function(req, res) {
 	});
 });
 
+router.get('/login', function(req, res) {
+  res.render('login', {
+    title: 'User Login'
+  });
+});
+
 router.post('/login', function(req, res){
   Users().where({
     username: req.body.username,
@@ -144,8 +150,14 @@ router.post('/login', function(req, res){
 });
 
 router.get('/logout', function(req, res){
-  res.clearCookie('username');
+  res.clearCookie('Username');
   res.redirect('/');
+});
+
+router.get('/about', function(req, res) {
+  res.render('about', {
+    title: 'About GPPL'
+  });
 });
 
 module.exports = router;
