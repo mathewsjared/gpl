@@ -77,7 +77,7 @@ router.get('/:username', function(req, res) {
 
 // GET ‘/:id/edit’ - shows edit page of individual resource TODO
 router.get('/:username/edit', function(req, res) {
-  if(req.signedCookies.Username === req.params.username) {
+  if(req.signedCookies.username === req.params.username) {
     Users().where({
         username: req.params.username
       })

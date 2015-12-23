@@ -5,14 +5,25 @@
         <a class="navbar-brand" href="/">
           <img class="logo" src="/images/GPL_MintGreen.png" />
         </a>
+      </div>
+      <div class="navbar-left">
         <ul class="nav nav-tabs navbar-left">
-          <li role="presentation"><a href="/users">USERS</a></li>
+          <li role="presentation" class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="link" aria-haspopup="true" aria-expanded="false">
+              USERS <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li role="presentation"><a href="/users">VIEW ALL</a></li>
+              <li role="presentation"><a href="/users/new">CREATE USER</a></li>
+              <li role="presentation"><a href="/login">LOGIN</a></li>
+              <li role="presentation"><a href="/logout">LOGOUT</a></li>
+            </ul>
+          </li>
           <li role="presentation"><a href="/matches">MATCHES</a></li>
           <li role="presentation"><a href="#">SLACK</a></li>
           <li role="presentation"><a href="/about">ABOUT</a></li>
-          <li role="presentation"><a href="/login">LOGIN</a></li>
-          <li role="presentation"><a href="/logout">LOGOUT</a></li>
         </ul>
+        <a class="btn btn-primary navbar-btn" href="/matches/new" role="button">START A NEW MATCH</a>
       </div>
     </div>
   </nav>

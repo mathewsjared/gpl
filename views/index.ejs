@@ -9,18 +9,9 @@
         <% include ./partials/header %>
       </header>
       <main>
-        <div class ="row">
-          <div class = "col-md-12 text-center">
-            <h1 class="home-title">Welcome to GPPL</h1>
-            <hr class="small-hr">
-            <p class="description">
-              The Galvanize Ping Pong League (GPPL) was created as a class project by a group of G17 (Fort Collins) students who like to play ping pong. The application allows you to create a user profile, enter your game stats, and see your rank (based on wins and losses) by Galvanize location. Have fun and play hard!
-            </p>
-          </div>
-        </div>
         <div class="row">
-          <div class="col-md-8">
-            <h2>Standings</h2>
+          <div class = "col-md-8">
+            <h2 class="text-center">Standings</h2>
             <table class="table table-condensed standings">
               <thead>
                 <tr>
@@ -45,6 +36,11 @@
                 <% } %>
               </tbody>
             </table>
+            <h1 class="home-title text-center">Welcome to GPPL</h1>
+            <hr>
+            <p class="description">
+              The Galvanize Ping Pong League (GPPL) was created as a class project by a group of G17 (Fort Collins) students who like to play ping pong. The application allows you to create a user profile, enter your game stats, and see your rank (based on wins and losses) by Galvanize location. Have fun and play hard!
+            </p>
           </div>
           <div class = "col-md-4">
             <h2>Table Tennis on Reddit</h2>

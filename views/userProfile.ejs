@@ -9,11 +9,14 @@
   <div class="container">
     <% include ./partials/header %>
     <div class="row">
-      <div class="col-md-12">
-        <h1>User Profile: <%= username %></h1>
-        <h3>Name: <%= first %> <%= last %></h3>
-        <h3>Email: <%= email %></h3>
-        <a href="<%= edit_link %>">Edit User Information</a>
+      <div class="col-md-offset-3 col-md-6">
+        <div class="well">
+          <h1>User Profile: <%= username %></h1>
+          <h3>Name: <%= first %> <%= last %></h3>
+          <h3>Email: <%= email %></h3>
+          <a class="pull-right" href="<%= edit_link %>"><em>Edit User Information</em></a>
+        </div>
+        <a href="/users">< Back to All Users</a>
       </div>
     </div>
   </div>

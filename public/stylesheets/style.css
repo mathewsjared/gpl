@@ -49,10 +49,37 @@ STEEL TEAL = #416174;
   background: #578db7;
 }
 
+.well {
+  margin-top: 30px;
+  background: #578db7;
+}
+
+.new-match-user {
+  height: 50px;
+  text-align: center;
+  font-size: 1.25em;
+}
+
+.scorecard {
+  background: #578db7;
+  color: #fff;
+  height: 400px;
+  text-align: center;
+  font-size: 18em;
+}
+
+.login-field {
+  margin-bottom: 15px;
+}
+
 body {
   background: #4991c9;
   padding-top: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header {
+  margin-bottom: 30px;
 }
 
 footer {
