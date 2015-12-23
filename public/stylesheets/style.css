@@ -72,6 +72,10 @@ STEEL TEAL = #416174;
   margin-bottom: 15px;
 }
 
+.nav a:hover {
+  color: #2b556d;
+}
+
 body {
   background: #4991c9;
   padding-top: 50px;
